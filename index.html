@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Pila</title>
+</head>
+<body>
+    <h1>Bienvenido a la visualización de una pila</h1>
+    <div id="arriba">
+        <div id="botones">
+            <table>
+                <tr>
+                    <td>
+                        <form name="formulario" action="#"><input type="text" name="dato" id="dato"></form></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><button onclick="dibujar()">Insertar elemento</button></td>
+                    <td><button onclick="borrar()">Eliminar elemento</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="codigo"><h2>Código en C</h2></div>
+    </div>
+    <div id="content">
+        <div id="pila">
+            <div class="contenedor" id="contenedor">
+                <div class="estilo_apuntador apuntadores a_inicio" id="a_inicio">Inicio -></div>
+                <div class="dibujos_pila" id="dibujos_pila"></div>
+                <div class="estilo_apuntador apuntadores a_fin" id="a_fin">Final -></div>
+            </div>
+        </div>
+        <div id="codigo">
+            <div class="titulo">
+                <h4>Estructura para la pila</h4>
+            </div>
+            <div class="funciones">
+                <code>
+                    struct stack{
+                            <li>int superior;</li>
+                            <li>int maxTam;</li>
+                            <li> int *ele;</li>
+                    };
+                </code>
+            </div>
+            <div class="titulo">
+                <h4>Función para inicializar la pila</h4>
+            </div>
+            <div class="funciones">
+                <code>
+                    struct stack* newStack(int capacidad){
+                        <li>struct stack *nodo = (struct stack*)malloc(sizeof(struct stack));</li>
+                        <li><br></li>
+                        <li>nodo->maxTam = capacidad;</li>
+                        <li>nodo->superior = -1;</li>
+                        <li>nodo->ele = (int*)malloc(sizeof(int) * capacidad);</li>
+                        <li><br></li>
+                        <li>return nodo;</li>    
+                    }
+                </code>
+            </div>
+            <div class="titulo">
+                <h4>Función para agregar un nuevo elemento a la pila</h4>
+            </div>
+            <div class="funciones">
+                <code>
+                    void push(struct stack *nodo, int x){
+                        <li>if (isFull(nodo)){
+                            <li class="sub-li">printf("Programa terminado\n");</li>
+                            <li class="sub-li">exit(EXIT_FAILURE);</li>
+                        </li>
+                        <li>}</li>
+                        <li><br></li>
+                        <li>printf("Insertando elemento %d\n", x);</li>
+                        <li>nodo->ele[++nodo->superior] = x;</li>  
+                    }
+                </code>
+            </div>
+            <div class="titulo">
+                <h4>Función para eliminar el ultimo elemento de la pila</h4>
+            </div>
+            <div class="funciones">
+                <code>
+                    int pop(struct stack *nodo){
+                        <li>if (isEmpty(nodo)){
+                            <li class="sub-li">printf("Programa terminado\n");</li>
+                            <li class="sub-li">exit(EXIT_FAILURE);</li>
+                        </li>
+                        <li>}</li>
+                        <li><br></li>
+                        <li>printf("Removiendo elemento %d\n", peek(nodo));</li>
+                        <li>return pt->ele[pt->superior--];</li>  
+                    }
+                </code>
+            </div>
+            <div class="titulo">
+                <h4>Clase principal y operaciones realizadas por usuario</h4>
+            </div>
+            <div class="funciones">
+                <code>
+                    int main(){
+                        <li>struct stack *nodo = newStack(100000);</li>
+                        <div class="operaciones" id="operaciones"><br></div>
+                        <li>if (isEmpty(nodo))
+                            <li class="sub-li">printf("No hay ele en la pila");</li>
+                        </li>
+                        <li>return 0;</li>
+                    }
+                </code>
+            </div>
+        </div>
+    </div>    
+    <script src="js/pila.js"></script>
+</body>
+</html>
